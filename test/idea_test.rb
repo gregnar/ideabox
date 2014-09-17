@@ -1,6 +1,4 @@
-gem 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative '../test/test_helper'
 require_relative '../lib/idea'
 
 class IdeaTest < Minitest::Test
@@ -33,4 +31,28 @@ class IdeaTest < Minitest::Test
     assert_equal [diet, drink, exercise], ideas.sort
   end
 
+  def test_ideas_have_an_id
+    idea = Idea.new("dinner", "beef stew")
+    idea.id = 1
+    assert_equal 1, idea.id
+  end
+
+  def test_update_values
+    idea = Idea.new("drinks", "sparkly water")
+    idea.title = "happy hour"
+    idea.description = "mojitos"
+    assert_equal "happy hour", idea.title
+    assert_equal "mojitos", idea.description
+  end
+
+  def test_a_new_idea
+    idea = Idea.new('sleep', 'all day')
+    assert idea.new?
+  end
+
+  def test_an_old_idea
+    idea = Idea.new('drink', 'lots of water')
+    idea.id = 1
+    refute idea.new?
+  end
 end
