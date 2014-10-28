@@ -3,6 +3,8 @@ require 'bundler'
 Bundler.require
 
 class IdeaBoxApp < Sinatra::Base
+  set :method_override, true
+
   not_found do
     erb :error
   end
@@ -19,6 +21,11 @@ class IdeaBoxApp < Sinatra::Base
     idea = Idea.new(params['idea_title'], params['idea_description'])
     idea.save
     redirect '/'
-    end
+  end
+
+  delete '/:id' do |id|
+    Idea.delete(id.to_i)
+    redirect '/'
+  end
 
 end
