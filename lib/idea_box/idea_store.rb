@@ -54,4 +54,9 @@ class IdeaStore
       database['ideas'] << data
     end
   end
+
+  def self.get_all_tags
+    tags = all.map(&:tags)
+    tags.flatten.uniq.map {|tag| tag.strip}
+  end
 end

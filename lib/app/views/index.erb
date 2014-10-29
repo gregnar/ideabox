@@ -2,16 +2,21 @@
   <p>
     Your Idea:
   </p>
-  <input type="text" name="idea[title]"/><br/>
-  <textarea name="idea[description]"></textarea><br/>
+  <input type="text" name="idea[title]" placeholder="Title"/><br/>
+  <textarea name="idea[description]" placeholder="Description"></textarea><br/>
+  <input type="text" name="idea[tags]" placeholder="Tags(comma separated)" size="25"/><br/>
   <input type="submit"/>
 </form>
 <h3>Existing Ideas</h3>
+  <form action="/tags" method="get">
+    <input type="submit" value="View By All Tags">
+  </form>
 <ul>
   <% ideas.each do |idea| %>
   <li>
     <%= idea.title %>(<%= idea.id %>)<br/>
-    <%= idea.description %>
+    <%= idea.description %><br/>
+    <strong>Tags:</strong> <%= idea.raw_tags %>
     <form action="/<%= idea.id %>/like" method="post" style="display: inline">
       <input type="submit" value="+">
     </form>

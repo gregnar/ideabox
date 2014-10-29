@@ -1,0 +1,9 @@
+<h2>Ideas by Tag:</h2>
+  <% tags.map do |tag| %>
+    <h3> <%= tag %> </h3>
+    <% tagged_ideas = ideas.select {|idea| idea.tags.include?(tag)} %>
+    <% tagged_ideas.each do |idea| %>
+      <%= idea.title %>(<%= idea.id %>)<br/>
+      <%= idea.description %><br/>
+    <% end %>
+  <% end %>
