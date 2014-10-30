@@ -8,6 +8,22 @@
   <input type="submit"/>
 </form>
 <h3>Existing Ideas</h3>
+
+  <form action="/search_results" method="get">
+    <span>Search All Ideas:</span>
+    <input type="text" name="query" placeholder="Enter Query">
+    <input type="submit"/>
+  </form>
+
+  <form action="/single_tag" method="get" enctype="application/x-www-form-urlencoded">
+    <span>View By Tag:</span>
+    <select name="tag" display: inline>
+    <% tags.map do |tag| %>
+      <option value= "<%= tag %>"> <%= tag %></option>
+    <% end %>
+    </select>
+    <input type="submit" display: inline>
+  </form>
   <form action="/tags" method="get">
     <input type="submit" value="View By All Tags">
   </form>

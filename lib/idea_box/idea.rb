@@ -5,7 +5,7 @@ class Idea
   def initialize(attributes = {})
     @title       = attributes["title"]
     @description = attributes["description"]
-    @raw_tags    = attributes["tags"]
+    @raw_tags    = attributes["tags"] || []
     @rank        = attributes["rank"] || 0
     @id          = attributes["id"]
   end
@@ -15,7 +15,7 @@ class Idea
   end
 
   def tags
-    raw_tags.split(",")
+    raw_tags.split(",").map(&:strip)
   end
 
   def to_h

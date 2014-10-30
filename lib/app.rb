@@ -16,7 +16,11 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/' do
-    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new(params)}
+    erb :index, locals: {
+                         ideas: IdeaStore.all.sort,
+                         idea: Idea.new(params),
+                         tags: IdeaStore.all_tags
+                         }
   end
 
   post '/' do
@@ -47,9 +51,19 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/tags' do
-    ideas = IdeaStore.all
-    tags  = IdeaStore.get_all_tags
-    erb :tags, locals: {ideas: ideas, tags: tags}
+    ideas_by_tag = IdeaStore.list_of_ideas_by_tag
+    erb :tags, locals: {ideas_by_tag: ideas_by_tag}
+  end
+
+  get '/single_tag' do
+    ideas_by_tag = IdeaStore.list_of_ideas_by_tag.select { |k, v| k == params[:tag] }
+    erb :tags, locals: {ideas_by_tag: ideas_by_tag}
+  end
+
+  get '/search_results' do
+    query = params[:query]
+    results = IdeasStore.search_idea(query)
+    erb :search_results, locals: {query: query, results: results}
   end
 
 end

@@ -1,8 +1,8 @@
 ---
 ideas:
+- title: Alex
+  description: Not a good guy
+  tags: bad, ungood, mean
 - title: Greg
-  description: Is good
-  tags: awesome
-- title: Nick
-  description: So Good
-  tags: awesome, hilarious, fun
+  description: A good guy
+  tags: good, unbad nice

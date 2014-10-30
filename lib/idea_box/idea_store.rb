@@ -55,8 +55,29 @@ class IdeaStore
     end
   end
 
-  def self.get_all_tags
+  def self.all_tags
     tags = all.map(&:tags)
-    tags.flatten.uniq.map {|tag| tag.strip}
+    tags.flatten.map {|tag| tag.strip}.uniq
+  end
+
+  def self.list_of_ideas_by_tag
+    ideas_by_tag = {}
+    all_tags.map do |tag|
+      ideas_by_tag[tag] = select_ideas_by_tag(tag)
+    end
+    ideas_by_tag
+  end
+
+  def self.select_ideas_by_tag(tag)
+    all.select {|idea| idea.tags.include?(tag)}
+  end
+
+  def search_ideas(query)
+    all.select { |idea| query_match?(idea, query) }
+  end
+
+  def query_match?(idea, query)
+    attributes = [idea.title, idea.description, idea.tags]
+    attributes.flatten.any? { |attribute| attribute =~ /#{query}/i }
   end
 end
