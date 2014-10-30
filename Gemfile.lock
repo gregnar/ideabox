@@ -27,6 +27,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rake (10.3.2)
     ruby_parser (3.2.2)
       sexp_processor (~> 4.1)
     sexp_processor (4.4.4)
@@ -50,5 +51,6 @@ PLATFORMS
 DEPENDENCIES
   erb2haml
   pry
+  rake
   sinatra
   sinatra-contrib

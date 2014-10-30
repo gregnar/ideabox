@@ -8,6 +8,7 @@ class Idea
     @raw_tags    = attributes["tags"] || []
     @rank        = attributes["rank"] || 0
     @id          = attributes["id"]
+    @created_at  = attributes["created_at"]
   end
 
   def save
