@@ -3,8 +3,8 @@
     Edit your Idea:
   </p>
   <input type="hidden" name="_method" value="PUT" />
-  <input type="text" name="idea[title]" placeholder="Title"/><br/>
-  <textarea name="idea[description]" placeholder="Description"></textarea><br/>
-  <input type="text" name="idea[tags]" placeholder="Tags(comma separated)" size="25"/><br/>
+  <input type="text" name="idea[title]" value="<%= idea.title %>"/><br/>
+  <textarea name="idea[description]" placeholder="Description"><%= idea.description %></textarea> <br/>
+  <input type="text" name="idea[tags]" value="<%=idea.raw_tags%>" size="25"/><br/>
   <input type='submit'/>
 </form>

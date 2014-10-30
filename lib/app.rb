@@ -62,7 +62,7 @@ class IdeaBoxApp < Sinatra::Base
 
   get '/search_results' do
     query = params[:query]
-    results = IdeasStore.search_idea(query)
+    results = IdeaStore.search_ideas(query)
     erb :search_results, locals: {query: query, results: results}
   end
 

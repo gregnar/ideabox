@@ -72,11 +72,11 @@ class IdeaStore
     all.select {|idea| idea.tags.include?(tag)}
   end
 
-  def search_ideas(query)
+  def self.search_ideas(query)
     all.select { |idea| query_match?(idea, query) }
   end
 
-  def query_match?(idea, query)
+  def self.query_match?(idea, query)
     attributes = [idea.title, idea.description, idea.tags]
     attributes.flatten.any? { |attribute| attribute =~ /#{query}/i }
   end

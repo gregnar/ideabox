@@ -1,0 +1,11 @@
+<h2>Search Results</h2>
+<h3>Query: "<%= query %>" </h3>
+<% results.each do |idea| %>
+  <%= idea.title %> (<%= idea.id %>)<br/>
+  <%= idea.description %><br/>
+  <%= idea.raw_tags %>
+  <br> <br>
+<% end %>
+<form action="/" method="get">
+  <input type="submit" name="Home" value = "Home">
+</form>
